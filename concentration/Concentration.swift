@@ -6,12 +6,11 @@
 //  Copyright © 2018 Ricardo van Burik. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Concentration {
     
     private(set) var cards = [Card]()
-    var gameTheme = ThemeFactory.allThemes[0].theme
     var pointsInGame = 0
     var flipsInGame = 0
     
@@ -25,12 +24,8 @@ struct Concentration {
             }
         }
     }
-    init(numberOfPairsOfCard: Int, gameTheme: Theme){
-        startNewGame(numberOfPairsOfCard: numberOfPairsOfCard, theme: gameTheme)
-    }
-    
     init(numberOfPairsOfCard: Int){
-        startNewGameWithRandomTheme(numberOfPairsOfCard: numberOfPairsOfCard)
+        startNewGame(numberOfPairsOfCard: numberOfPairsOfCard)
     }
     
     mutating func chooseCard(at index: Int) {
@@ -52,27 +47,17 @@ struct Concentration {
         }
     }
     
-    mutating func startNewGameWithRandomTheme(numberOfPairsOfCard: Int){
-        chooseRandomThemeForGame()
-        startNewGame(numberOfPairsOfCard: numberOfPairsOfCard, theme: self.gameTheme)
-    }
-    
-    mutating func startNewGame(numberOfPairsOfCard: Int, theme: Theme){
+    mutating func startNewGame(numberOfPairsOfCard: Int){
         assert(numberOfPairsOfCard > 0, "Concentration.startNewGame(numberOfParsOfCard \(numberOfPairsOfCard): You must have at least one pair of cards.")
         self.pointsInGame = 0
-        self.gameTheme = theme
         
         cards.removeAll()
-        for _ in 0..<numberOfPairsOfCard {
-            let card = Card()
-            cards += [card, card] 
+        for index in 0..<numberOfPairsOfCard {
+            let card = Card(identifier: 1, image: UIImage(named: "icon-apple")!)
+            cards += [card, card]
+            print(index)
         }
         cards.shuffle()
-    }
-    
-    mutating private func chooseRandomThemeForGame(){
-        self.gameTheme = ThemeFactory.randomTheme.theme
-        print("Game theme set to \(self.gameTheme)")
     }
     
     

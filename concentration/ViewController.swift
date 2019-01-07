@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     private(set) var scoreCount = 0 {
         didSet{
             scoreLabel.text = "Score: \(scoreCount)"
@@ -32,8 +32,7 @@ class ViewController: UIViewController {
     }
     
     lazy var game = Concentration(numberOfPairsOfCard: numberOfPairsOfCard)
-    
-    
+
     //OUTLETS
     @IBOutlet private weak var flipCountLabel: UILabel! {
         didSet{
@@ -43,20 +42,25 @@ class ViewController: UIViewController {
     @IBOutlet private weak var recordLabel: UILabel!
     @IBOutlet private weak var scoreLabel: UILabel!
 
-    @IBOutlet private var cardButtons: [UIButton]!
-    
-    private lazy var emojiChoices = game.gameTheme.icons
+    @IBOutlet private var cardButtons: [PlayingCard]!
     
     override func viewDidLoad() {
+        initializeAllGameCards()
         updateViewFromModel()
         setColorsForAllViewRelatedProperties()
+    }
+    
+    private func initializeAllGameCards(){
+        for (index, button) in self.cardButtons.enumerated() {
+            button.setupPlayingCard(card: Card(identifier: index + 1, image: UIImage(named: "icon-apple", in: Bundle(for: self.classForCoder), compatibleWith: traitCollection)!))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool){
         self.navigationController?.setNavigationBarHidden(true, animated:true)
     }
     
-    @IBAction func touchCard(_ sender: UIButton){
+    @IBAction func touchCard(_ sender: PlayingCard){
         if let cardNumber = cardButtons.index(of: sender){
             
             self.flipCountLabel.text = "Flipcount: " + String(game.addFlipToGameAndReturn())
@@ -85,12 +89,11 @@ class ViewController: UIViewController {
             }
             
             if card.isFaceUp {
-                button.setTitle(emoji(for: card), for: .normal)
                 button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
             }
             else {
                 button.setTitle("", for: .normal)
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : game.gameTheme.colors[1]
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
             }
         }
         scoreCount = game.pointsInGame
@@ -110,7 +113,7 @@ class ViewController: UIViewController {
     private func updateFlipCountLabel(){
         let attributes: [NSAttributedString.Key: Any] = [
             .strokeWidth : 5.0,
-            .strokeColor : game.gameTheme.colors[1]
+            .strokeColor : UIColor.red
         ]
         let attributedString = NSAttributedString(string: "Flips \(game.flipsInGame)", attributes: attributes)
         flipCountLabel.attributedText = attributedString
@@ -135,16 +138,8 @@ class ViewController: UIViewController {
         return false
     }
     
-    private func emoji(for card: Card) -> String {
-        if emoji[card] == nil, emojiChoices.count > 0 {
-            let randomStringIndex  = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arch4random)
-            emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
-        }
-        return emoji[card] ?? "?"
-    }
-    
     private func setColorsForAllViewRelatedProperties(){
-        let color = game.gameTheme.colors[1]
+        let color = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         self.flipCountLabel.textColor = color
         self.recordLabel.textColor = color
         self.scoreLabel.textColor = color

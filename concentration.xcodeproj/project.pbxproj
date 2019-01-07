@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8C63BEE52153DE9B006BA740 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C63BEE42153DE9B006BA740 /* MenuViewController.swift */; };
-		8C6EF0A6214FB28400CA0D56 /* ThemeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6EF0A5214FB28400CA0D56 /* ThemeFactory.swift */; };
-		8C6EF0AB214FFE0B00CA0D56 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6EF0A9214FEC9500CA0D56 /* Theme.swift */; };
-		8C7AF89A2158B06E002D027A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7AF8992158B06E002D027A /* DetailViewController.swift */; };
+		8CC08D002191CED2002F4906 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC08CFF2191CED2002F4906 /* PlayingCard.swift */; };
+		8CC08D0421934EFB002F4906 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC08D0321934EFB002F4906 /* DataController.swift */; };
 		8CF4F23A213FC77700CF9F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F239213FC77700CF9F2B /* AppDelegate.swift */; };
 		8CF4F23C213FC77700CF9F2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F23B213FC77700CF9F2B /* ViewController.swift */; };
 		8CF4F23F213FC77700CF9F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF4F23D213FC77700CF9F2B /* Main.storyboard */; };
@@ -22,9 +21,8 @@
 
 /* Begin PBXFileReference section */
 		8C63BEE42153DE9B006BA740 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		8C6EF0A5214FB28400CA0D56 /* ThemeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeFactory.swift; sourceTree = "<group>"; };
-		8C6EF0A9214FEC9500CA0D56 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		8C7AF8992158B06E002D027A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		8CC08CFF2191CED2002F4906 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
+		8CC08D0321934EFB002F4906 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		8CF4F236213FC77700CF9F2B /* concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF4F239213FC77700CF9F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CF4F23B213FC77700CF9F2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,14 +68,13 @@
 				8CF4F23B213FC77700CF9F2B /* ViewController.swift */,
 				8CF4F23D213FC77700CF9F2B /* Main.storyboard */,
 				8C63BEE42153DE9B006BA740 /* MenuViewController.swift */,
-				8C7AF8992158B06E002D027A /* DetailViewController.swift */,
 				8CF4F24C213FD74C00CF9F2B /* Concentration.swift */,
 				8CF4F24E213FD80100CF9F2B /* Card.swift */,
-				8C6EF0A5214FB28400CA0D56 /* ThemeFactory.swift */,
-				8C6EF0A9214FEC9500CA0D56 /* Theme.swift */,
+				8CC08CFF2191CED2002F4906 /* PlayingCard.swift */,
 				8CF4F240213FC77800CF9F2B /* Assets.xcassets */,
 				8CF4F242213FC77800CF9F2B /* LaunchScreen.storyboard */,
 				8CF4F245213FC77800CF9F2B /* Info.plist */,
+				8CC08D0321934EFB002F4906 /* DataController.swift */,
 			);
 			path = concentration;
 			sourceTree = "<group>";
@@ -155,13 +152,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF4F23C213FC77700CF9F2B /* ViewController.swift in Sources */,
+				8CC08D002191CED2002F4906 /* PlayingCard.swift in Sources */,
 				8CF4F23A213FC77700CF9F2B /* AppDelegate.swift in Sources */,
-				8C6EF0A6214FB28400CA0D56 /* ThemeFactory.swift in Sources */,
 				8C63BEE52153DE9B006BA740 /* MenuViewController.swift in Sources */,
-				8C6EF0AB214FFE0B00CA0D56 /* Theme.swift in Sources */,
+				8CC08D0421934EFB002F4906 /* DataController.swift in Sources */,
 				8CF4F24D213FD74C00CF9F2B /* Concentration.swift in Sources */,
 				8CF4F24F213FD80100CF9F2B /* Card.swift in Sources */,
-				8C7AF89A2158B06E002D027A /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
