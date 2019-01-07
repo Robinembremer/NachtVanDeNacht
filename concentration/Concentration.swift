@@ -11,6 +11,8 @@ import UIKit
 struct Concentration {
     
     private(set) var cards = [Card]()
+    
+    var dataController = AppDelegate.dataController
     var pointsInGame = 0
     var flipsInGame = 0
     
@@ -53,7 +55,7 @@ struct Concentration {
         
         cards.removeAll()
         for index in 0..<numberOfPairsOfCard {
-            let card = Card(identifier: 1, image: UIImage(named: "icon-apple")!)
+            let card = Card(identifier: dataController.getRandomIdentifier()!, image: dataController.getImage()!)
             cards += [card, card]
             print(index)
         }

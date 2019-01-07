@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     
     private func initializeAllGameCards(){
         for (index, button) in self.cardButtons.enumerated() {
-            button.setupPlayingCard(card: Card(identifier: index + 1, image: UIImage(named: "icon-apple", in: Bundle(for: self.classForCoder), compatibleWith: traitCollection)!))
+            button.setupPlayingCard(card: game.cards[index])
         }
     }
     
@@ -61,10 +61,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchCard(_ sender: PlayingCard){
+        print("Touched")
         if let cardNumber = cardButtons.index(of: sender){
             
             self.flipCountLabel.text = "Flipcount: " + String(game.addFlipToGameAndReturn())
             game.chooseCard(at: cardNumber)
+            sender.card.isFaceUp = !sender.card.isFaceUp
+            sender.showSideOfCard()
             updateViewFromModel()
         } else {
             print("Chosen card was not in cardbuttons")
@@ -85,14 +88,16 @@ class ViewController: UIViewController {
             let card = game.cards[index]
             
             if card.isMatched, button.isEnabled {
-                button.isEnabled = false;
+                button.isMatched()
             }
             
             if card.isFaceUp {
                 button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                button.showSideOfCard()
             }
             else {
                 button.setTitle("", for: .normal)
+                button.showSideOfCard()
                 button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
             }
         }
