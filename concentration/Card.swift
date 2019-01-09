@@ -6,30 +6,38 @@
 //  Copyright © 2018 Ricardo van Burik. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct Card: Hashable {
+
+    var hashValue: Int { return identifier }
     
     static func ==(lhs: Card, rhs: Card) -> Bool {
         return lhs.identifier == rhs.identifier
     }
     
+    var imageURL: String
     var isFaceUp = false
     var isMatched = false
-    private var identifier: Int
+    var identifier: Int
     var nTimesTouched = 0
-    var image: UIImage
-
+    
     private static var identifierFactory = 0
     
-    init(identifier: Int, image: UIImage){
-        self.identifier = identifier
-        self.image = image
+    private static func getUniqueIndentifier() -> Int {
+        identifierFactory += 1
+        return identifierFactory
+    }
+    
+    init(url: String){
+        self.identifier = Card.getUniqueIndentifier()
+        self.imageURL = url
     }
     
     mutating func hasAMatch(){
         self.isMatched = true
     }
+    
     
 }
 

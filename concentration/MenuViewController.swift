@@ -9,21 +9,18 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    
-    @IBOutlet weak var titleBar: UILabel!
         
+    @IBOutlet weak var titleBar: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    
     override func viewDidLoad(){
         super.viewDidLoad()
+        self.buttonSetup()
     }
     
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
-    
-
-    @IBAction func printLevelSliderOutput(_ sender: UISlider){
-        print("Slider output: \(sender.value)")
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -36,8 +33,15 @@ class MenuViewController: UIViewController {
     
     @IBAction func unWindToHomeScreen(unwindSegue: UIStoryboardSegue){}
     
+    
     @IBAction func startGame(){
         performSegue(withIdentifier: "toGameSegue", sender: self)
+    }
+    
+    private func buttonSetup(){
+        playButton.layer.cornerRadius = 25
+        playButton.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+        playButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
     }
     
 }

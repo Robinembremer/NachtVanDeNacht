@@ -6,13 +6,12 @@
 //  Copyright © 2018 Ricardo van Burik. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 struct Concentration {
     
     private(set) var cards = [Card]()
-    
-    var dataController = AppDelegate.dataController
+    let controller = DataController()
     var pointsInGame = 0
     var flipsInGame = 0
     
@@ -26,6 +25,7 @@ struct Concentration {
             }
         }
     }
+    
     init(numberOfPairsOfCard: Int){
         startNewGame(numberOfPairsOfCard: numberOfPairsOfCard)
     }
@@ -48,20 +48,21 @@ struct Concentration {
             }
         }
     }
-    
+
     mutating func startNewGame(numberOfPairsOfCard: Int){
         assert(numberOfPairsOfCard > 0, "Concentration.startNewGame(numberOfParsOfCard \(numberOfPairsOfCard): You must have at least one pair of cards.")
         self.pointsInGame = 0
         
         cards.removeAll()
-        for index in 0..<numberOfPairsOfCard {
-            let card = Card(identifier: dataController.getRandomIdentifier()!, image: dataController.getImage()!)
-            cards += [card, card]
-            print(index)
+        for _ in 0..<numberOfPairsOfCard {
+            let urls = controller.getRandomImageURLPair()
+            var card = Card(url: urls[0])
+            cards += [card]
+            card.imageURL = urls[1]
+            cards += [card]
         }
         cards.shuffle()
     }
-    
     
     func calculatePointsAfterTwoMatchedCards(with firstCard: Card, and secondCard: Card)->Int {
         if firstCard.nTimesTouched > 3 || secondCard.nTimesTouched > 3 {

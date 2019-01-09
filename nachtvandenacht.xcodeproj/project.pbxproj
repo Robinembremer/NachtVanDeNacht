@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C4637DA21E6552A0099ABF0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4637D921E6552A0099ABF0 /* DataController.swift */; };
 		8C63BEE52153DE9B006BA740 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C63BEE42153DE9B006BA740 /* MenuViewController.swift */; };
-		8CC08D002191CED2002F4906 /* PlayingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC08CFF2191CED2002F4906 /* PlayingCard.swift */; };
-		8CC08D0421934EFB002F4906 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC08D0321934EFB002F4906 /* DataController.swift */; };
 		8CF4F23A213FC77700CF9F2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F239213FC77700CF9F2B /* AppDelegate.swift */; };
 		8CF4F23C213FC77700CF9F2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F23B213FC77700CF9F2B /* ViewController.swift */; };
 		8CF4F23F213FC77700CF9F2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF4F23D213FC77700CF9F2B /* Main.storyboard */; };
@@ -20,10 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C4637D921E6552A0099ABF0 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		8C63BEE42153DE9B006BA740 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
-		8CC08CFF2191CED2002F4906 /* PlayingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCard.swift; sourceTree = "<group>"; };
-		8CC08D0321934EFB002F4906 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		8CF4F236213FC77700CF9F2B /* concentration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = concentration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CF4F236213FC77700CF9F2B /* nachtvandenacht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nachtvandenacht.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CF4F239213FC77700CF9F2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CF4F23B213FC77700CF9F2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8CF4F23E213FC77700CF9F2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +54,7 @@
 		8CF4F237213FC77700CF9F2B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8CF4F236213FC77700CF9F2B /* concentration.app */,
+				8CF4F236213FC77700CF9F2B /* nachtvandenacht.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,11 +68,10 @@
 				8C63BEE42153DE9B006BA740 /* MenuViewController.swift */,
 				8CF4F24C213FD74C00CF9F2B /* Concentration.swift */,
 				8CF4F24E213FD80100CF9F2B /* Card.swift */,
-				8CC08CFF2191CED2002F4906 /* PlayingCard.swift */,
 				8CF4F240213FC77800CF9F2B /* Assets.xcassets */,
 				8CF4F242213FC77800CF9F2B /* LaunchScreen.storyboard */,
 				8CF4F245213FC77800CF9F2B /* Info.plist */,
-				8CC08D0321934EFB002F4906 /* DataController.swift */,
+				8C4637D921E6552A0099ABF0 /* DataController.swift */,
 			);
 			path = concentration;
 			sourceTree = "<group>";
@@ -82,9 +79,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8CF4F235213FC77700CF9F2B /* concentration */ = {
+		8CF4F235213FC77700CF9F2B /* nachtvandenacht */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8CF4F248213FC77800CF9F2B /* Build configuration list for PBXNativeTarget "concentration" */;
+			buildConfigurationList = 8CF4F248213FC77800CF9F2B /* Build configuration list for PBXNativeTarget "nachtvandenacht" */;
 			buildPhases = (
 				8CF4F232213FC77700CF9F2B /* Sources */,
 				8CF4F233213FC77700CF9F2B /* Frameworks */,
@@ -94,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = concentration;
+			name = nachtvandenacht;
 			productName = concentration;
-			productReference = 8CF4F236213FC77700CF9F2B /* concentration.app */;
+			productReference = 8CF4F236213FC77700CF9F2B /* nachtvandenacht.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -115,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8CF4F231213FC77700CF9F2B /* Build configuration list for PBXProject "concentration" */;
+			buildConfigurationList = 8CF4F231213FC77700CF9F2B /* Build configuration list for PBXProject "nachtvandenacht" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -128,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8CF4F235213FC77700CF9F2B /* concentration */,
+				8CF4F235213FC77700CF9F2B /* nachtvandenacht */,
 			);
 		};
 /* End PBXProject section */
@@ -152,10 +149,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CF4F23C213FC77700CF9F2B /* ViewController.swift in Sources */,
-				8CC08D002191CED2002F4906 /* PlayingCard.swift in Sources */,
 				8CF4F23A213FC77700CF9F2B /* AppDelegate.swift in Sources */,
 				8C63BEE52153DE9B006BA740 /* MenuViewController.swift in Sources */,
-				8CC08D0421934EFB002F4906 /* DataController.swift in Sources */,
+				8C4637DA21E6552A0099ABF0 /* DataController.swift in Sources */,
 				8CF4F24D213FD74C00CF9F2B /* Concentration.swift in Sources */,
 				8CF4F24F213FD80100CF9F2B /* Card.swift in Sources */,
 			);
@@ -308,7 +304,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = robin.ricardo.nmu;
+				PRODUCT_BUNDLE_IDENTIFIER = ricardo.com.example.nachtvandenacht;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -326,7 +322,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = robin.ricardo.nmu;
+				PRODUCT_BUNDLE_IDENTIFIER = ricardo.com.example.nachtvandenacht;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -336,7 +332,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8CF4F231213FC77700CF9F2B /* Build configuration list for PBXProject "concentration" */ = {
+		8CF4F231213FC77700CF9F2B /* Build configuration list for PBXProject "nachtvandenacht" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CF4F246213FC77800CF9F2B /* Debug */,
@@ -345,7 +341,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8CF4F248213FC77800CF9F2B /* Build configuration list for PBXNativeTarget "concentration" */ = {
+		8CF4F248213FC77800CF9F2B /* Build configuration list for PBXNativeTarget "nachtvandenacht" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8CF4F249213FC77800CF9F2B /* Debug */,

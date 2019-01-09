@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     private(set) var scoreCount = 0 {
         didSet{
             scoreLabel.text = "Score: \(scoreCount)"
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         }
     }
     
-    private var emoji = [Card:String]()
+    private var img = [Card:[String]]()
     
     var numberOfPairsOfCard: Int {
         if let numberOfCards = cardButtons?.count {
@@ -32,42 +32,30 @@ class ViewController: UIViewController {
     }
     
     lazy var game = Concentration(numberOfPairsOfCard: numberOfPairsOfCard)
-
+    
+    
     //OUTLETS
-    @IBOutlet private weak var flipCountLabel: UILabel! {
-        didSet{
-            updateFlipCountLabel()
-        }
-    }
+    @IBOutlet private weak var flipCountLabel: UILabel!
     @IBOutlet private weak var recordLabel: UILabel!
     @IBOutlet private weak var scoreLabel: UILabel!
 
-    @IBOutlet private var cardButtons: [PlayingCard]!
+    @IBOutlet private var cardButtons: [UIButton]!
+    
+    private lazy var imgChoices = DataController().imageURLs
     
     override func viewDidLoad() {
-        initializeAllGameCards()
         updateViewFromModel()
-        setColorsForAllViewRelatedProperties()
-    }
-    
-    private func initializeAllGameCards(){
-        for (index, button) in self.cardButtons.enumerated() {
-            button.setupPlayingCard(card: game.cards[index])
-        }
     }
     
     override func viewWillAppear(_ animated: Bool){
         self.navigationController?.setNavigationBarHidden(true, animated:true)
     }
     
-    @IBAction func touchCard(_ sender: PlayingCard){
-        print("Touched")
+    @IBAction func touchCard(_ sender: UIButton){
         if let cardNumber = cardButtons.index(of: sender){
             
             self.flipCountLabel.text = "Flipcount: " + String(game.addFlipToGameAndReturn())
             game.chooseCard(at: cardNumber)
-            sender.card.isFaceUp = !sender.card.isFaceUp
-            sender.showSideOfCard()
             updateViewFromModel()
         } else {
             print("Chosen card was not in cardbuttons")
@@ -77,7 +65,6 @@ class ViewController: UIViewController {
     @IBAction func resetGame(_ sender: UIButton){
         flipCountLabel.text = "Flipcount: 0"
         scoreCount = 0
-        setColorsForAllViewRelatedProperties()
         resetAllButtons()
         updateViewFromModel()
     }
@@ -87,18 +74,37 @@ class ViewController: UIViewController {
             let button = cardButtons[index]
             let card = game.cards[index]
             
+            
+            button.contentHorizontalAlignment = .center
+            button.contentVerticalAlignment = .center
+            button.imageView?.contentMode = .scaleAspectFill
+            
+            button.layer.borderWidth = 0
             if card.isMatched, button.isEnabled {
-                button.isMatched()
+                print("KOM IK HIER")
+                button.layer.borderWidth = 2
+                button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    button.layer.borderWidth = 0
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    
+                    button.setBackgroundImage(nil, for: .normal)
+                    button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                    button.isEnabled = false;
+                }
+                
             }
             
             if card.isFaceUp {
-                button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-                button.showSideOfCard()
+                button.setBackgroundImage(UIImage(named: card.imageURL), for: .normal)
             }
             else {
                 button.setTitle("", for: .normal)
-                button.showSideOfCard()
-                button.backgroundColor = card.isMatched ? #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 0) : #colorLiteral(red: 0.1019607857, green: 0.2784313858, blue: 0.400000006, alpha: 1)
+                button.setBackgroundImage(nil, for: .normal)
+                button.backgroundColor = card.isMatched ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
             }
         }
         scoreCount = game.pointsInGame
@@ -113,15 +119,6 @@ class ViewController: UIViewController {
         for button in cardButtons {
             button.isEnabled = true
         }
-    }
-    
-    private func updateFlipCountLabel(){
-        let attributes: [NSAttributedString.Key: Any] = [
-            .strokeWidth : 5.0,
-            .strokeColor : UIColor.red
-        ]
-        let attributedString = NSAttributedString(string: "Flips \(game.flipsInGame)", attributes: attributes)
-        flipCountLabel.attributedText = attributedString
     }
     
     private func checkIfAnyCardsAreLeft() -> Bool {
@@ -142,13 +139,7 @@ class ViewController: UIViewController {
         }
         return false
     }
-    
-    private func setColorsForAllViewRelatedProperties(){
-        let color = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        self.flipCountLabel.textColor = color
-        self.recordLabel.textColor = color
-        self.scoreLabel.textColor = color
-    }
+
 }
 
 extension Int {
