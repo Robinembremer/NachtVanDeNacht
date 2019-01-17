@@ -26,7 +26,7 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGameSegue" {
             if let gameVC = segue.destination as? ViewController {
-                gameVC.game = Concentration(numberOfPairsOfCard: gameVC.numberOfPairsOfCard)
+                gameVC.game = Concentration(numberOfPairsOfCard: gameVC.numberOfPairsOfCard, hardDifficulty: false)
             }
         }
     }

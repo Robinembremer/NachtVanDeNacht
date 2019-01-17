@@ -26,8 +26,8 @@ struct Concentration {
         }
     }
     
-    init(numberOfPairsOfCard: Int){
-        startNewGame(numberOfPairsOfCard: numberOfPairsOfCard)
+    init(numberOfPairsOfCard: Int, hardDifficulty: Bool){
+        startNewGame(numberOfPairsOfCard: numberOfPairsOfCard, hardDifficulty: hardDifficulty)
     }
     
     mutating func chooseCard(at index: Int) {
@@ -49,7 +49,7 @@ struct Concentration {
         }
     }
 
-    mutating func startNewGame(numberOfPairsOfCard: Int){
+    mutating func startNewGame(numberOfPairsOfCard: Int, hardDifficulty: Bool){
         assert(numberOfPairsOfCard > 0, "Concentration.startNewGame(numberOfParsOfCard \(numberOfPairsOfCard): You must have at least one pair of cards.")
         self.pointsInGame = 0
         
@@ -57,9 +57,14 @@ struct Concentration {
         for _ in 0..<numberOfPairsOfCard {
             let urls = controller.getRandomImageURLPair()
             var card = Card(url: urls[0])
-            cards += [card]
-            card.imageURL = urls[1]
-            cards += [card]
+            if hardDifficulty {
+                cards += [card]
+                card.imageURL = urls[1]
+                cards += [card]
+            }
+            else {
+                cards += [card, card]
+            }
         }
         cards.shuffle()
     }

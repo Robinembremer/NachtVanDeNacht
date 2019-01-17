@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         }
     }
     
+    private var hardDifficulty: Bool = false
+    
     private var record = 0 {
         didSet {
             recordLabel.text = "Highscore: \(record)"
@@ -31,8 +33,7 @@ class ViewController: UIViewController {
         return 10
     }
     
-    lazy var game = Concentration(numberOfPairsOfCard: numberOfPairsOfCard)
-    
+    lazy var game = Concentration(numberOfPairsOfCard: numberOfPairsOfCard, hardDifficulty: self.hardDifficulty)
     
     //OUTLETS
     @IBOutlet private weak var flipCountLabel: UILabel!
