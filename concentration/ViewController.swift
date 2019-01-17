@@ -72,17 +72,13 @@ class ViewController: UIViewController {
     
     func updateViewFromModel(){
         for index in cardButtons.indices {
+            
             let button = cardButtons[index]
             let card = game.cards[index]
-            
-            
-            button.contentHorizontalAlignment = .center
-            button.contentVerticalAlignment = .center
-            button.imageView?.contentMode = .scaleAspectFill
+            button.imageView!.contentMode = .scaleAspectFit
             
             button.layer.borderWidth = 0
             if card.isMatched, button.isEnabled {
-                print("KOM IK HIER")
                 button.layer.borderWidth = 2
                 button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
                 
@@ -91,7 +87,6 @@ class ViewController: UIViewController {
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    
                     button.setBackgroundImage(nil, for: .normal)
                     button.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                     button.isEnabled = false;

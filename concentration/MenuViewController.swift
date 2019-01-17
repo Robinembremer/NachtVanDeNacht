@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class MenuViewController: UIViewController {
         
     @IBOutlet weak var titleBar: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var difficultyToggle: UISwitch!
+    private let playerController = AVPlayerViewController()
     
     private var difficultyHard = false
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        playVideo()
         self.buttonSetup()
     }
     
@@ -29,10 +33,31 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGameSegue" {
             if let gameVC = segue.destination as? ViewController {
-                
                 gameVC.game = Concentration(numberOfPairsOfCard: gameVC.numberOfPairsOfCard, hardDifficulty: isDifficultyHard())
             }
         }
+    }
+    
+    private func playVideo() {
+        guard let path = Bundle.main.path(forResource: "IntroVideoLittleStar", ofType:"mp4") else {
+            debugPrint("Introvideo not found")
+            return
+        }
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        playerController.player = player
+        present(playerController, animated: false) {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            self.playerController.showsPlaybackControls = false
+            player.play()
+           
+        }
+    
+    }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+     playerController.dismiss(animated: false)
+        
+        
     }
     
     @IBAction func unWindToHomeScreen(unwindSegue: UIStoryboardSegue){}
