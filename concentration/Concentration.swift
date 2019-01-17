@@ -57,6 +57,7 @@ struct Concentration {
         for _ in 0..<numberOfPairsOfCard {
             let urls = controller.getRandomImageURLPair()
             var card = Card(url: urls[0])
+            print("FINAL DIFFICULTY \(hardDifficulty)")
             if hardDifficulty {
                 cards += [card]
                 card.imageURL = urls[1]

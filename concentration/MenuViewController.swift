@@ -12,6 +12,9 @@ class MenuViewController: UIViewController {
         
     @IBOutlet weak var titleBar: UILabel!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var difficultyToggle: UISwitch!
+    
+    private var difficultyHard = false
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -26,13 +29,17 @@ class MenuViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toGameSegue" {
             if let gameVC = segue.destination as? ViewController {
-                gameVC.game = Concentration(numberOfPairsOfCard: gameVC.numberOfPairsOfCard, hardDifficulty: false)
+                
+                gameVC.game = Concentration(numberOfPairsOfCard: gameVC.numberOfPairsOfCard, hardDifficulty: isDifficultyHard())
             }
         }
     }
     
     @IBAction func unWindToHomeScreen(unwindSegue: UIStoryboardSegue){}
     
+    private func isDifficultyHard() -> Bool {
+        return self.difficultyToggle.isOn ? true : false
+    }
     
     @IBAction func startGame(){
         performSegue(withIdentifier: "toGameSegue", sender: self)
