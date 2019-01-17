@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -17,6 +19,7 @@ class ViewController: UIViewController {
     }
     
     private var hardDifficulty: Bool = false
+    private let playerController = AVPlayerViewController()
     
     private var record = 0 {
         didSet {
@@ -105,10 +108,33 @@ class ViewController: UIViewController {
         }
         scoreCount = game.pointsInGame
         if !checkIfAnyCardsAreLeft() {
+            
             if checkIfHighscoreIsBeaten(withScore: game.flipsInGame) {
                     record = (game.flipsInGame / 2) + scoreCount
             }
         }
+    }
+    
+    private func playVideo() {
+        guard let path = Bundle.main.path(forResource: "EindVideoLittleStar", ofType:"mp4") else {
+            debugPrint("Introvideo not found")
+            return
+        }
+        let player = AVPlayer(url: URL(fileURLWithPath: path))
+        playerController.player = player
+        present(playerController, animated: false) {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem)
+            self.playerController.showsPlaybackControls = false
+            player.play()
+            
+        }
+        
+    }
+    
+    @objc func playerDidFinishPlaying(note: NSNotification) {
+        playerController.dismiss(animated: false)
+        
+        
     }
     
     private func resetAllButtons(){
