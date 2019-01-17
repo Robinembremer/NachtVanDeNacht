@@ -18,6 +18,7 @@
 		8CF4F244213FC77800CF9F2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CF4F242213FC77800CF9F2B /* LaunchScreen.storyboard */; };
 		8CF4F24D213FD74C00CF9F2B /* Concentration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F24C213FD74C00CF9F2B /* Concentration.swift */; };
 		8CF4F24F213FD80100CF9F2B /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF4F24E213FD80100CF9F2B /* Card.swift */; };
+		8CF5C78721F10D550095376F /* NvdNLogozonderdatum.png in Resources */ = {isa = PBXBuildFile; fileRef = 8CF5C78621F10D550095376F /* NvdNLogozonderdatum.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		8CF4F245213FC77800CF9F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CF4F24C213FD74C00CF9F2B /* Concentration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration.swift; sourceTree = "<group>"; };
 		8CF4F24E213FD80100CF9F2B /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		8CF5C78621F10D550095376F /* NvdNLogozonderdatum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NvdNLogozonderdatum.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 				8CF4F24C213FD74C00CF9F2B /* Concentration.swift */,
 				8CF4F24E213FD80100CF9F2B /* Card.swift */,
 				8CF4F240213FC77800CF9F2B /* Assets.xcassets */,
+				8CF5C78621F10D550095376F /* NvdNLogozonderdatum.png */,
 				8CA5B18321F0A5FB003B2CB2 /* IntroVideoLittleStar.mp4 */,
 				8CF4F242213FC77800CF9F2B /* LaunchScreen.storyboard */,
 				8CF4F245213FC77800CF9F2B /* Info.plist */,
@@ -141,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CF5C78721F10D550095376F /* NvdNLogozonderdatum.png in Resources */,
 				8CA5B18621F0E8D0003B2CB2 /* EindVideoLittleStar.mp4 in Resources */,
 				8CF4F244213FC77800CF9F2B /* LaunchScreen.storyboard in Resources */,
 				8CF4F241213FC77800CF9F2B /* Assets.xcassets in Resources */,

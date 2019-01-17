@@ -12,6 +12,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var finalTitle: UILabel!
+    @IBOutlet weak var mainStack: UIStackView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    
     private(set) var scoreCount = 0 {
         didSet{
             scoreLabel.text = "Score: \(scoreCount)"
@@ -49,6 +55,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         updateViewFromModel()
+        self.finalTitle.isHidden = true
+        self.mainStack.isHidden = false
+        self.imageView.isHidden = true
+        self.backButton.isHidden = true
+        self.buttonSetup()
     }
     
     override func viewWillAppear(_ animated: Bool){
@@ -73,6 +84,21 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    private func enableFinalTitle(){
+        let score: Int
+        if self.scoreCount > 0 && self.scoreCount <= 50 {
+            score = 100 / self.scoreCount * 5
+        }
+        else {
+            score = 10
+        }
+        self.finalTitle.text = "Met uw score kon het licht in \(score)% van Nederland uit!"
+        self.finalTitle.isHidden = false
+        self.backButton.isHidden = false
+        self.imageView.isHidden = false
+        self.mainStack.isHidden = true
+    }
+    
     func updateViewFromModel(){
         for index in cardButtons.indices {
             
@@ -82,9 +108,6 @@ class ViewController: UIViewController {
             
             button.layer.borderWidth = 0
             if card.isMatched, button.isEnabled {
-                button.layer.borderWidth = 2
-                button.layer.borderColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     button.layer.borderWidth = 0
                 }
@@ -108,7 +131,8 @@ class ViewController: UIViewController {
         }
         scoreCount = game.pointsInGame
         if !checkIfAnyCardsAreLeft() {
-            
+            playVideo()
+            self.enableFinalTitle()
             if checkIfHighscoreIsBeaten(withScore: game.flipsInGame) {
                     record = (game.flipsInGame / 2) + scoreCount
             }
@@ -160,6 +184,12 @@ class ViewController: UIViewController {
             return true
         }
         return false
+    }
+    
+    private func buttonSetup(){
+        backButton.layer.cornerRadius = 25
+        backButton.backgroundColor = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 1)
+        backButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
     }
 
 }
